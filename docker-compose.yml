@@ -4,6 +4,12 @@ services:
     image: postgres
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_DB: db
   backend:
     build: ./backend
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
@@ -13,6 +19,10 @@ services:
       - "3001:3000"
     depends_on:
       - db
+    environment:
+      DB_HOST: ${DB_HOST}
+      DB_PASS: ${DB_PASS}
+      RUBYOPT: "-W:no-deprecated -W:no-experimental"
   frontend:
     image: "node:10-alpine"
     user: "node"
