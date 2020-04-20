@@ -1,11 +1,11 @@
-# Rails-React-TypeScript-Docker Example [![CircleCI](https://circleci.com/gh/ohbarye/rails-react-typescript-docker-example/tree/master.svg?style=svg)](https://circleci.com/gh/ohbarye/rails-react-typescript-docker-example/tree/master)
+# Rails-React-TypeScript-Docker Example [![CircleCI](https://circleci.com/gh/seanbjornsson/rails-react-typescript-docker-example/tree/master.svg?style=svg)](https://circleci.com/gh/seanbjornsson/rails-react-typescript-docker-example/tree/master)
 
 ## TL;DR
 
 **Here is an example application with the following modern web technology stacks. With this boilerplate, you can easily start to build your own app.**
 
-- [Ruby](https://www.ruby-lang.org/en/) 2.7.0
-- [Rails](https://rubyonrails.org/) 6.0.0
+- [Ruby](https://www.ruby-lang.org/en/) 2.7.1
+- [Rails](https://rubyonrails.org/) 6.0.1
 - [React.js](https://reactjs.org/) 16.10.2
 - [TypeScript](https://www.typescriptlang.org/) 3.6.3
 - [Docker](https://docs.docker.com/)
@@ -15,15 +15,15 @@
 ## Usage
 
 ```shell
-$ git clone https://github.com/ohbarye/rails-react-typescript-docker-example.git && cd rails-react-typescript-docker-example
+$ git clone https://github.com/seanbjornsson/rails-react-typescript-docker-example.git && cd rails-react-typescript-docker-example
 
 # Setup
-$ docker-compose run frontend yarn
-$ docker-compose run backend rake db:create
+$ DB_PASS=somepass DB_HOST=$(docker-machine ip) docker-compose run frontend yarn
+$ DB_PASS=somepass DB_HOST=$(docker-machine ip) docker-compose run backend rake db:create
 
 # Start
-$ docker-compose up -d
-$ open http://localhost:3000
+$ DB_PASS=somepass DB_HOST=$(docker-machine ip) docker-compose up -d
+$ open http://$(docker-machine ip):3000
 ```
 
 ## Motivation
@@ -35,7 +35,6 @@ As for my experience, I've been a Rails engineer, I'm but recently working like 
 The SPA, Of course, has a backend API, Ruby on Rails connecting PostgreSQL in my case. I use Docker Compose for defining and running multi-container Docker applications because it's not much simple to bootstrap all of applications and middlewares.
 
 **Learning each technology itself is not a burden. I rather like learning. But I've thought I'd like to pursue my playground whose tech stacks are virtually same as ones I develop in work.**
-
 
 ## Further Details
 
